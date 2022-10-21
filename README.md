@@ -21,23 +21,25 @@ Developed by: Praveen D
 RegisterNumber: 
 '''
 import numpy as np
-# Preprocessing Input data
 X = np.array(eval(input()))
 Y = np.array(eval(input()))
-num,den=0,0
-# Building the model
-XMean=np.mean(X)
-YMean=np.mean(Y)
+X_mean=np.mean(X)
+Y_mean=np.mean(Y)
+numer=0
+denom=0
 for i in range(len(X)):
-    num+=(X[i]-XMean)*(Y[i]-YMean)
-    den+=(X[i]-XMean)**2
-m=num/den
-#y=mx+c
-c=YMean-m*XMean
+    numer+=(X[i]-X_mean)*(Y[i]-Y_mean)
+    denom+=(X[i]-X_mean)**2
+m=numer/denom
+c=Y_mean-(m*X_mean)
+Y_pred=(m*X)+c
 print (m, c)
-#Predict the output
-Y_pred=m*X+c
 print (Y_pred)
+import matplotlib.pyplot as plt
+plt.scatter(X,Y,color = 'yellow')
+plt.plot(X,Y_pred,color = 'black')
+plt.title('xv=y')
+plt.show()
 ```
 ## Sample Input and Output
 ![inp](./input.jpg)
